@@ -57,10 +57,6 @@ const ProjectsSection = () => {
   target="_blank"
   rel="noopener noreferrer"
   className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium cursor-pointer"
-  onClick={(e) => {
-    e.preventDefault();  // Prevent default <a> behavior
-    window.open(project.link, '_blank', 'noopener,noreferrer');  // Force open new tab
-  }}
 >
   View Live Project <ExternalLink className="w-4 h-4" />
 </a>
