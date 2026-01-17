@@ -21,9 +21,9 @@ const Resume = () => {
 
       <Header />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-12 sm:mb-16 relative z-10">
           <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 w-fit mx-auto">
             <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
             <span className="text-xs sm:text-sm font-medium text-purple-300">My Resume</span>
@@ -39,8 +39,8 @@ const Resume = () => {
         </div>
 
         {/* Resume Card */}
-        <div className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl overflow-hidden p-6 sm:p-8 md:p-10 lg:p-12">
-          <div className="text-center mb-8 sm:mb-10">
+        <div className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl overflow-hidden p-6 sm:p-8 md:p-10 lg:p-12 relative z-10">
+          <div className="text-center mb-8 sm:mb-10 relative z-10">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-300 mb-4">
               Resume Preview
             </h3>
@@ -51,18 +51,18 @@ const Resume = () => {
             {/* Preview Button */}
             <button
               onClick={openPreview}
-              className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 mb-6 sm:mb-8"
+              className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 mb-6 sm:mb-8 cursor-pointer relative z-10"
             >
               <Eye className="w-5 h-5 sm:w-6 sm:h-6" />
               View Resume Preview
             </button>
 
             {/* Download Button */}
-            <div className="mt-4 sm:mt-6">
+            <div className="mt-4 sm:mt-6 relative z-10">
               <a
                 href="/Madhvi_Resume.pdf"
                 download="Madhvi_Resume.pdf"
-                className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 cursor-pointer"
               >
                 <Download className="w-5 h-5 sm:w-6 sm:h-6" />
                 Download Full Resume (PDF)

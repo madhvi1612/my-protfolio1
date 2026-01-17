@@ -16,7 +16,7 @@ const About = () => {
 
       <Header />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10">
         <div className="text-center mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-6 w-fit mx-auto">
             <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
@@ -33,7 +33,7 @@ const About = () => {
         </div>
 
         {/* Main Content Card */}
-        <div className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden">
+        <div className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
             {/* Right: Experience & Intro */}
@@ -55,11 +55,11 @@ const About = () => {
               </div>
 
               {/* CTA */}
-              <div className="pt-6">
+              <div className="pt-6 relative z-10">
                 <a
                   href="/Madhvi_Resume.pdf"
                   download="Madhvi_Resume.pdf"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 text-sm sm:text-base cursor-pointer"
                 >
                   <Download className="w-5 h-5" />
                   Download Resume
@@ -112,7 +112,7 @@ const About = () => {
         </div>
 
         {/* Optional Stats */}
-        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 relative z-10">
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
             <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">6</div>
             <p className="text-gray-400 text-sm sm:text-base mt-2">Months Internship</p>

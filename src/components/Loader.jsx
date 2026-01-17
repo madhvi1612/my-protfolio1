@@ -46,7 +46,12 @@ const Loader = ({ isLoading }) => {
     <div
       ref={loaderRef}
       className="fixed inset-0 flex items-center justify-center bg-black z-50"
-      style={{ opacity: 0 }}
+      style={{ 
+        opacity: 0,
+        visibility: isLoading ? 'visible' : 'hidden',
+        pointerEvents: isLoading ? 'auto' : 'none',
+        transition: 'visibility 0.3s ease-in-out, opacity 1s ease-in-out'
+      }}
     >
       <div className="text-center">
         <h1

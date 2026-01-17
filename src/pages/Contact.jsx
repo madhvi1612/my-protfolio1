@@ -15,9 +15,9 @@ const Contact = () => {
 
       <Header />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 relative z-10">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-16">
+        <div className="text-center mb-10 sm:mb-16 relative z-10">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full px-4 py-2 mb-6 w-fit mx-auto">
             <Send className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
             <span className="text-sm font-medium text-purple-300">Get in Touch</span>
@@ -31,15 +31,15 @@ const Contact = () => {
         </div>
 
         {/* Main Contact Card */}
-        <div className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+        <div className="bg-white/5 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             {/* Left: Contact Details */}
-            <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
+            <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center order-2 lg:order-1 relative z-10">
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-10 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent text-center lg:text-left">
                 Let's Connect
               </h2>
 
-              <div className="space-y-5 sm:space-y-6 md:space-y-7">
+              <div className="space-y-5 sm:space-y-6 md:space-y-7 relative z-10">
                 {/* Phone */}
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="w-10 h-10 sm:w-11 sm:h-11 bg-gradient-to-br from-purple-500/25 to-blue-500/25 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -62,7 +62,7 @@ const Contact = () => {
                     <p className="text-gray-400 text-xs sm:text-sm">Email</p>
                     <a
                       href="mailto:makvanamadhvi20@gmail.com"
-                      className="text-sm sm:text-base md:text-lg font-medium text-purple-300 hover:text-purple-200 transition-colors break-all block"
+                      className="text-sm sm:text-base md:text-lg font-medium text-purple-300 hover:text-purple-200 transition-colors break-all block cursor-pointer relative z-10"
                     >
                       makvanamadhvi20@gmail.com
                     </a>
@@ -80,7 +80,7 @@ const Contact = () => {
                       href="https://www.linkedin.com/in/madhvi-makvana"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm sm:text-base md:text-lg font-medium text-purple-300 hover:text-purple-200 transition-colors break-all block"
+                      className="text-sm sm:text-base md:text-lg font-medium text-purple-300 hover:text-purple-200 transition-colors break-all block cursor-pointer relative z-10"
                     >
                       linkedin.com/in/madhvi-makvana
                     </a>
@@ -98,7 +98,7 @@ const Contact = () => {
                       href="https://github.com/madhvi1612"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm sm:text-base md:text-lg font-medium text-purple-300 hover:text-purple-200 transition-colors break-all block"
+                      className="text-sm sm:text-base md:text-lg font-medium text-purple-300 hover:text-purple-200 transition-colors break-all block cursor-pointer relative z-10"
                     >
                       github.com/madhvi1612
                     </a>
@@ -108,7 +108,7 @@ const Contact = () => {
             </div>
 
             {/* Right: CTA Section */}
-            <div className="bg-gradient-to-br from-purple-600/25 to-blue-600/25 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center items-center text-center order-1 lg:order-2">
+            <div className="bg-gradient-to-br from-purple-600/25 to-blue-600/25 p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center items-center text-center order-1 lg:order-2 relative z-10">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 text-white">
                 Ready to Collaborate?
               </h3>
@@ -117,7 +117,7 @@ const Contact = () => {
               </p>
               <a
                 href="mailto:makvanamadhvi20@gmail.com"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-medium text-sm sm:text-base shadow-lg shadow-purple-500/40 hover:shadow-purple-500/60 hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-medium text-sm sm:text-base shadow-lg shadow-purple-500/40 hover:shadow-purple-500/60 hover:scale-105 transition-all duration-300 cursor-pointer relative z-10"
               >
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                 Send Email
@@ -127,7 +127,7 @@ const Contact = () => {
         </div>
 
         {/* Final touch */}
-        <div className="text-center mt-10 sm:mt-12 text-gray-400 text-sm sm:text-base">
+        <div className="text-center mt-10 sm:mt-12 text-gray-400 text-sm sm:text-base relative z-10">
           <p>Looking forward to connecting with you! ✨</p>
         </div>
       </div>

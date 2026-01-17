@@ -45,9 +45,9 @@ const Skills = () => {
 
       <Header />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-12 sm:mb-16 relative z-10">
           <div className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-6 w-fit mx-auto">
             <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
             <span className="text-xs sm:text-sm font-medium text-purple-300">My Skills</span>
@@ -63,15 +63,15 @@ const Skills = () => {
         </div>
 
         {/* Technical Skills Grid */}
-        <div className="mb-16 sm:mb-20">
+        <div className="mb-16 sm:mb-20 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
             Core Technologies
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-4 sm:gap-6 lg:gap-8 relative z-10">
             {technicalSkills.map((skill, index) => (
               <div
                 key={index}
-                className="group bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-white/10 p-4 sm:p-6 lg:p-8 text-center hover:border-purple-500/50 hover:shadow-xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2"
+                className="group bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-2xl border border-white/10 p-4 sm:p-6 lg:p-8 text-center hover:border-purple-500/50 hover:shadow-xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2 relative z-10"
               >
                 <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-xl flex items-center justify-center text-white">
                   {skill.icon}
@@ -85,16 +85,16 @@ const Skills = () => {
         </div>
 
         {/* Tools & Platforms */}
-        <div className="mb-16 sm:mb-20">
+        <div className="mb-16 sm:mb-20 relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
             Tools & Platforms
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto relative z-10">
             {tools.map((tool, index) => (
               <div
                 key={index}
-                className="group relative bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-3xl border border-white/10 p-6 sm:p-8 lg:p-10 text-center transition-all duration-300 hover:border-purple-500/60 hover:shadow-2xl hover:shadow-purple-500/30 hover:-translate-y-3"
+                className="group relative bg-white/5 backdrop-blur-xl rounded-xl sm:rounded-3xl border border-white/10 p-6 sm:p-8 lg:p-10 text-center transition-all duration-300 hover:border-purple-500/60 hover:shadow-2xl hover:shadow-purple-500/30 hover:-translate-y-3 relative z-10"
               >
                 {/* Icon Container */}
                 <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-gradient-to-br from-purple-500/40 to-blue-500/40 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-lg">
@@ -114,10 +114,10 @@ const Skills = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="text-center relative z-10">
           <a
             href="/"
-            className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105 cursor-pointer"
           >
             View My Projects
           </a>

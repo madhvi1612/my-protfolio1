@@ -175,13 +175,15 @@ function AppContent() {
       <Loader isLoading={loading} />
 
       {!loading && (
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/skill" element={<Skills />} />
-          <Route path="/resume" element={<Resume />} />
-        </Routes>
+        <div className="relative z-0">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/skill" element={<Skills />} />
+            <Route path="/resume" element={<Resume />} />
+          </Routes>
+        </div>
       )}
     </>
   );

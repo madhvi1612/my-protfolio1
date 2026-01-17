@@ -95,12 +95,12 @@ const Footer = () => {
           </div>
 
           {/* Center: Social Links */}
-          <div className="flex justify-center gap-6 order-1 sm:order-2">
+          <div className="flex justify-center gap-6 order-1 sm:order-2 relative z-10">
             <a
               href="https://github.com/madhvi1612"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/60 hover:bg-white/10 transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/60 hover:bg-white/10 transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <Github className="w-5 h-5" />
             </a>
@@ -109,22 +109,29 @@ const Footer = () => {
               href="https://www.linkedin.com/in/madhvi-makvana"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/60 hover:bg-white/10 transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/60 hover:bg-white/10 transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <Linkedin className="w-5 h-5" />
             </a>
 
             <a
               href="mailto:makvanamadhvi20@gmail.com"
-              className="w-10 h-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/60 hover:bg-white/10 transition-all duration-300 hover:scale-110"
+              className="w-10 h-10 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-purple-500/60 hover:bg-white/10 transition-all duration-300 hover:scale-110 cursor-pointer"
             >
               <Mail className="w-5 h-5" />
             </a>
           </div>
 
           {/* Right: Back to Top */}
-          <div className="text-center sm:text-right text-sm text-gray-400 order-3">
-            <a href="#" className="hover:text-purple-400 transition-colors">
+          <div className="text-center sm:text-right text-sm text-gray-400 order-3 relative z-10">
+            <a 
+              href="#" 
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-purple-400 transition-colors cursor-pointer"
+            >
               Back to Top
             </a>
           </div>

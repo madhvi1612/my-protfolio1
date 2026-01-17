@@ -59,7 +59,7 @@ const Header = () => {
       initial="hidden"
       animate="visible"
       variants={navVariants}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 pointer-events-auto ${
         isScrolled
           ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-2xl"
           : "bg-slate-950/40 backdrop-blur-md"
@@ -87,7 +87,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <motion.div
-            className="hidden md:flex items-center gap-2"
+            className="hidden md:flex items-center gap-2 relative z-50"
             variants={navVariants}
           >
             {["/", "/about", "/skill", "/resume", "/contact"].map((path, i) => {
@@ -96,9 +96,9 @@ const Header = () => {
                 <motion.div variants={itemVariants} key={path}>
                   <NavLink
                     to={path}
-                    style={linkStyle}
+                    style={{...linkStyle, cursor: 'pointer'}}
                     className={({ isActive }) =>
-                      `hover:bg-white/10 hover:text-white transition-all ${
+                      `hover:bg-white/10 hover:text-white transition-all cursor-pointer ${
                         isActive ? "bg-white/10 text-white" : ""
                       }`
                     }
@@ -140,7 +140,7 @@ const Header = () => {
         initial={false}
         animate={{ height: isMobileMenuOpen ? "auto" : 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
-        className="md:hidden overflow-hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10"
+        className="md:hidden overflow-hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10 relative z-50 pointer-events-auto"
       >
         <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col gap-2">
           {["/", "/about", "/skill", "/resume", "/contact"].map((path, i) => {
@@ -150,9 +150,9 @@ const Header = () => {
                 key={path}
                 to={path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                style={linkStyle}
+                style={{...linkStyle, cursor: 'pointer'}}
                 className={({ isActive }) =>
-                  `hover:bg-white/10 hover:text-white transition-all ${
+                  `hover:bg-white/10 hover:text-white transition-all cursor-pointer ${
                     isActive ? "bg-white/10 text-white" : ""
                   }`
                 }

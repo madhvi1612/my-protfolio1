@@ -14,7 +14,7 @@ const ModernPortfolioHero = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 flex items-center justify-center p-4 overflow-hidden relative">
       {/* Background blobs */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -top-48 -left-48 animate-pulse" />
         <div className="absolute w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-700" />
       </div>
@@ -83,9 +83,9 @@ const ModernPortfolioHero = () => {
               </p>
 
               {/* Buttons */}
-              <div className="flex flex-wrap gap-4 mb-10">
+              <div className="flex flex-wrap gap-4 mb-10 relative z-10">
                 <button
-                  className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-all flex items-center gap-2"
+                  className="group bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:scale-105 transition-all flex items-center gap-2 cursor-pointer"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 >
@@ -100,7 +100,7 @@ const ModernPortfolioHero = () => {
                 <a
                   href="/Madhvi_Resume.pdf"
                   download
-                  className="bg-white/5 border border-white/10 text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all flex items-center gap-2"
+                  className="bg-white/5 border border-white/10 text-white px-8 py-3 rounded-xl font-semibold hover:bg-white/10 transition-all flex items-center gap-2 cursor-pointer relative z-10"
                 >
                   <Download className="w-5 h-5" />
                   Resume
@@ -108,12 +108,19 @@ const ModernPortfolioHero = () => {
               </div>
 
               {/* Socials */}
-              <div className="flex gap-4">
-                <a className="social-btn">
+              <div className="flex gap-4 relative z-10">
+                <a 
+                  href="https://www.linkedin.com/in/madhvi-makvana"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-btn"
+                >
                   <Linkedin className="w-5 h-5" />
                 </a>
                 <a
                   href="https://github.com/madhvi1612"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="social-btn"
                 >
                   <Github className="w-5 h-5" />
@@ -166,6 +173,9 @@ const ModernPortfolioHero = () => {
           justify-content: center;
           color: #9ca3af;
           transition: all 0.3s ease;
+          cursor: pointer;
+          position: relative;
+          z-index: 10;
         }
 
         .social-btn:hover {

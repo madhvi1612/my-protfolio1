@@ -21,16 +21,16 @@ const projects = [
 const ProjectsSection = () => {
   return (
     <>
-      <section className="max-w-6xl mx-auto px-4">
+      <section className="max-w-6xl mx-auto px-4 relative z-10">
         <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
           My work
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 mt-5">
+        <div className="grid md:grid-cols-2 gap-8 mt-5 relative z-10">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:scale-[1.02]"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:scale-[1.02] relative z-10"
             >
               <h3 className="text-2xl font-semibold text-white mb-3">
                 {project.title}
@@ -51,15 +51,15 @@ const ProjectsSection = () => {
                 ))}
               </div>
 
-              <div className="mt-4">
+              <div className="mt-4 relative z-10">
                 <a
-  href={project.link}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium cursor-pointer"
->
-  View Live Project <ExternalLink className="w-4 h-4" />
-</a>
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 font-medium transition-colors duration-300 hover:underline cursor-pointer"
+                >
+                  View Live Project <ExternalLink className="w-4 h-4" />
+                </a>
               </div>
             </div>
           ))}
