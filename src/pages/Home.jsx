@@ -11,20 +11,20 @@ import Footer from "../components/Footer";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white">
+    <>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-900 text-white">
       <div>
         {/* Header (Navigation) */}
         <Header />
       </div>
 
-      <div className="mt-2">
+      <div className="mt-20">
         {/* Hero Section (Main) */}
         <Main />
       </div>
 
       {/* Optional: Add more sections below */}
       <section className="py-10 px-6 max-w-6xl mx-auto">
-      
            <ProjectsSection />
       </section>
       {/* <About /> */}
@@ -34,6 +34,7 @@ const Home = () => {
         <Footer />
       </footer>
     </div>
+      </>
   );
 };
 

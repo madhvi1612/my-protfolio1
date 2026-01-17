@@ -1,463 +1,169 @@
-// import React from "react";
+"use client";
 
-// const Header = () => {
-//   return (
-//     <nav className="navbar navbar-expand-lg bg-body-tertiary px-4">
-//       <div className="container-fluid">
-//         <a className="navbar-brand fw-bold" href="#">
-//           Madhvi
-//         </a>
-
-//         <div className="d-flex gap-4">
-//           <a href="/" className="nav-link text-dark">
-//             Home
-//           </a>
-//           <a href="/about" className="nav-link text-dark">
-//             About me
-//           </a>
-//           <a href="/contact" className="nav-link text-dark">
-//             Contact Me
-//           </a>
-//           <a href="/skill" className="nav-link text-dark">
-//             Skills
-//           </a>
-//           <a href="/resume" className="nav-link text-dark">
-//             Resume
-//           </a>
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Header;
-
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
+import { Link, NavLink } from "react-router-dom";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+
+const navVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -12 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 20);
+  });
+
+  // Optional: hide on scroll down, show on scroll up
+  // const [hidden, setHidden] = useState(false);
+  // let previousScroll = 0;
+  // useMotionValueEvent(scrollY, "change", (latest) => {
+  //   if (latest > previousScroll && latest > 100) {
+  //     setHidden(true);
+  //   } else {
+  //     setHidden(false);
+  //   }
+  //   previousScroll = latest;
+  //   setIsScrolled(latest > 20);
+  // });
+
+  const linkStyle = {
+    padding: "0.5rem 1rem",
+    borderRadius: "0.5rem",
+    fontWeight: "500",
+    color: "rgb(156,163,175)",
+    textDecoration: "none",
+    transition: "all 0.3s",
+    display: "block",
+  };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <motion.nav
+      initial="hidden"
+      animate="visible"
+      variants={navVariants}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-lg"
-          : "bg-slate-950/50 backdrop-blur-md"
+          ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+          : "bg-slate-950/40 backdrop-blur-md"
       }`}
-      style={{
-        padding: "0 1rem",
-      }}
+      // animate={{ y: hidden ? -100 : 0 }}
+      // transition={{ duration: 0.4 }}
     >
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: "80px",
-        }}
-      >
-        {/* Brand Logo */}
-        <a
-          href="#"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            textDecoration: "none",
-          }}
-        >
-          <div style={{ position: "relative" }}>
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background: "linear-gradient(to right, rgb(147, 51, 234), rgb(59, 130, 246))",
-                borderRadius: "0.5rem",
-                filter: "blur(8px)",
-                opacity: 0.5,
-                transition: "opacity 0.3s",
-              }}
-            ></div>
-            <div
-              style={{
-                position: "relative",
-                background: "linear-gradient(to right, rgb(147, 51, 234), rgb(59, 130, 246))",
-                color: "white",
-                fontWeight: "bold",
-                fontSize: "1.25rem",
-                padding: "0.5rem 0.75rem",
-                borderRadius: "0.5rem",
-              }}
-            >
-              M
-            </div>
-          </div>
-          <span
-            style={{
-              color: "white",
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              letterSpacing: "-0.025em",
-            }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo with bounce entrance */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, type: "spring", stiffness: 120 }}
           >
-            Madhvi
-            <span
-              style={{
-                background: "linear-gradient(to right, rgb(192, 132, 252), rgb(147, 197, 253))",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              .
-            </span>
-          </span>
-        </a>
+            <Link to="/" className="flex items-center gap-2.5">
+              <div className="bg-gradient-to-r from-purple-600 to-blue-500 text-white font-bold px-3 py-1.5 rounded-lg">
+                M
+              </div>
+              <span className="text-white text-2xl font-bold">
+                Madhvi<span className="text-purple-400">.</span>
+              </span>
+            </Link>
+          </motion.div>
 
-        {/* Desktop Navigation */}
-        <div
-          style={{
-            display: "none",
-            alignItems: "center",
-            gap: "0.25rem",
-          }}
-          className="desktop-nav"
-        >
-          <a
-            href="/"
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-              position: "relative",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-            }}
+          {/* Desktop Navigation */}
+          <motion.div
+            className="hidden md:flex items-center gap-2"
+            variants={navVariants}
           >
-            Home
-          </a>
-          <a
-            href="/about"
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-            }}
-          >
-            About me
-          </a>
-          <a
-            href="/skill"
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-            }}
-          >
-            Skills
-          </a>
-          <a
-            href="/resume"
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-            }}
-          >
-            Resume
-          </a>
-          <a
-            href="/contact"
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-            }}
-          >
-            Contact Me
-          </a>
-        </div>
+            {["/", "/about", "/skill", "/resume", "/contact"].map((path, i) => {
+              const labels = ["Home", "About", "Skills", "Resume", "Contact"];
+              return (
+                <motion.div variants={itemVariants} key={path}>
+                  <NavLink
+                    to={path}
+                    style={linkStyle}
+                    className={({ isActive }) =>
+                      `hover:bg-white/10 hover:text-white transition-all ${
+                        isActive ? "bg-white/10 text-white" : ""
+                      }`
+                    }
+                  >
+                    {labels[i]}
+                  </NavLink>
+                </motion.div>
+              );
+            })}
 
-        {/* CTA Button - Desktop */}
-        <div style={{ display: "none" }} className="desktop-cta">
-          <a
-            href="/contact"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              background: "linear-gradient(to right, rgb(147, 51, 234), rgb(59, 130, 246))",
-              color: "white",
-              padding: "0.625rem 1.5rem",
-              borderRadius: "0.5rem",
-              fontWeight: "600",
-              boxShadow: "0 10px 15px -3px rgba(147, 51, 234, 0.3)",
-              transition: "all 0.3s",
-              textDecoration: "none",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "scale(1.05)";
-              e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(147, 51, 234, 0.5)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(147, 51, 234, 0.3)";
-            }}
-          >
-            <Sparkles size={16} />
-            <span>Let's Talk</span>
-          </a>
-        </div>
+            {/* Uncomment if you want fancy CTA button */}
+            {/* <motion.div variants={itemVariants}>
+              <NavLink
+                to="/contact"
+                className="ml-6 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-500 
+                         hover:from-purple-700 hover:to-blue-600 text-white font-semibold 
+                         rounded-lg transition-all shadow-lg shadow-purple-500/20 
+                         hover:shadow-purple-500/40 flex items-center gap-2"
+              >
+                <Sparkles size={16} className="animate-pulse" />
+                Let's Talk
+              </NavLink>
+            </motion.div> */}
+          </motion.div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          style={{
-            display: "none",
-            color: "white",
-            padding: "0.5rem",
-            borderRadius: "0.5rem",
-            background: "transparent",
-            border: "none",
-            cursor: "pointer",
-            transition: "background-color 0.3s",
-          }}
-          className="mobile-menu-btn"
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "transparent";
-          }}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-
-      {/* Mobile Navigation */}
-      <div
-        style={{
-          overflow: "hidden",
-          transition: "max-height 0.3s",
-          maxHeight: isMobileMenuOpen ? "384px" : "0",
-        }}
-        className="mobile-nav"
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.5rem",
-            paddingTop: "1rem",
-            paddingBottom: "1.5rem",
-          }}
-        >
-          <a
-            href="/"
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{
-              padding: "0.75rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-              e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
+          {/* Mobile Menu Button */}
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="md:hidden text-white p-2 rounded-md hover:bg-white/10 transition"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            Home
-          </a>
-          <a
-            href="/about"
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{
-              padding: "0.75rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-              e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
-          >
-            About me
-          </a>
-          <a
-            href="/skill"
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{
-              padding: "0.75rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-              e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
-          >
-            Skills
-          </a>
-          <a
-            href="/resume"
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{
-              padding: "0.75rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-              e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
-          >
-            Resume
-          </a>
-          <a
-            href="/contact"
-            onClick={() => setIsMobileMenuOpen(false)}
-            style={{
-              padding: "0.75rem 1rem",
-              borderRadius: "0.5rem",
-              fontWeight: "500",
-              color: "rgb(156, 163, 175)",
-              textDecoration: "none",
-              transition: "all 0.3s",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "white";
-              e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "rgb(156, 163, 175)";
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
-          >
-            Contact Me
-          </a>
-          <a
-            href="/contact"
-            style={{
-              marginTop: "0.5rem",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
-              background: "linear-gradient(to right, rgb(147, 51, 234), rgb(59, 130, 246))",
-              color: "white",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "0.5rem",
-              fontWeight: "600",
-              boxShadow: "0 10px 15px -3px rgba(147, 51, 234, 0.3)",
-              textDecoration: "none",
-            }}
-          >
-            <Sparkles size={16} />
-            <span>Let's Talk</span>
-          </a>
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </motion.button>
         </div>
       </div>
 
-      <style jsx>{`
-        @media (min-width: 768px) {
-          .desktop-nav,
-          .desktop-cta {
-            display: flex !important;
-          }
-          .mobile-menu-btn,
-          .mobile-nav {
-            display: none !important;
-          }
-        }
-        @media (max-width: 767px) {
-          .mobile-menu-btn {
-            display: block !important;
-          }
-        }
-      `}</style>
-    </nav>
+      {/* Mobile Menu Dropdown */}
+      <motion.div
+        initial={false}
+        animate={{ height: isMobileMenuOpen ? "auto" : 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="md:hidden overflow-hidden bg-slate-900/95 backdrop-blur-lg border-t border-white/10"
+      >
+        <div className="max-w-7xl mx-auto px-4 py-5 flex flex-col gap-2">
+          {["/", "/about", "/skill", "/resume", "/contact"].map((path, i) => {
+            const labels = ["Home", "About", "Skills", "Resume", "Contact"];
+            return (
+              <NavLink
+                key={path}
+                to={path}
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={linkStyle}
+                className={({ isActive }) =>
+                  `hover:bg-white/10 hover:text-white transition-all ${
+                    isActive ? "bg-white/10 text-white" : ""
+                  }`
+                }
+              >
+                {labels[i]}
+              </NavLink>
+            );
+          })}
+        </div>
+      </motion.div>
+    </motion.nav>
   );
 };
 
